@@ -6,6 +6,8 @@
 .project
 .metadata
 bin/
+gwt-unitCache/
+*.jar
 tmp/
 *.tmp
 *.bak
