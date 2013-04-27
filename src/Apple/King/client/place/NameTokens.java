@@ -5,6 +5,7 @@ public class NameTokens {
 	public static final String first = "first";
 	public static final String second = "second";
 	public static final String truesecond = "truesecond";
+	public static final String third = "third";
 
 	public static String getFirst() {
 		return first;
@@ -16,5 +17,9 @@ public class NameTokens {
 
 	public static String getTruesecond() {
 		return truesecond;
+	}
+
+	public static String getThird() {
+		return third;
 	}
 }

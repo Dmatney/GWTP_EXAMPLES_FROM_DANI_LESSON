@@ -9,6 +9,8 @@ import com.google.gwt.inject.client.GinModules;
 import com.google.gwt.inject.client.Ginjector;
 import com.gwtplatform.dispatch.client.gin.DispatchAsyncModule;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
+import Apple.King.client.HeaderPresenter;
+import Apple.King.client.ThirdPresenter;
 
 @GinModules({ DispatchAsyncModule.class, ClientModule.class })
 public interface ClientGinjector extends Ginjector {
@@ -20,4 +22,8 @@ public interface ClientGinjector extends Ginjector {
 	AsyncProvider<FirstPresenter> getFirstPresenter();
 
 	AsyncProvider<SecondPresenter> getSecondPresenter();
+
+	AsyncProvider<HeaderPresenter> getHeaderPresenter();
+
+	AsyncProvider<ThirdPresenter> getThirdPresenter();
 }

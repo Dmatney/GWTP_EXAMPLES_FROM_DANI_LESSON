@@ -9,6 +9,10 @@ import Apple.King.client.place.DefaultPlace;
 import Apple.King.client.place.NameTokens;
 import Apple.King.client.SecondPresenter;
 import Apple.King.client.SecondView;
+import Apple.King.client.HeaderPresenter;
+import Apple.King.client.HeaderView;
+import Apple.King.client.ThirdPresenter;
+import Apple.King.client.ThirdView;
 
 public class ClientModule extends AbstractPresenterModule {
 
@@ -23,5 +27,11 @@ public class ClientModule extends AbstractPresenterModule {
 
 		bindPresenter(SecondPresenter.class, SecondPresenter.MyView.class,
 				SecondView.class, SecondPresenter.MyProxy.class);
+
+		bindPresenter(HeaderPresenter.class, HeaderPresenter.MyView.class,
+				HeaderView.class, HeaderPresenter.MyProxy.class);
+
+		bindPresenter(ThirdPresenter.class, ThirdPresenter.MyView.class,
+				ThirdView.class, ThirdPresenter.MyProxy.class);
 	}
 }
