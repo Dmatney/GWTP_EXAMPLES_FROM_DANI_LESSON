@@ -13,6 +13,8 @@ import Apple.King.client.HeaderPresenter;
 import Apple.King.client.HeaderView;
 import Apple.King.client.ThirdPresenter;
 import Apple.King.client.ThirdView;
+import Apple.King.client.RatePagePresenter;
+import Apple.King.client.RatePageView;
 
 public class ClientModule extends AbstractPresenterModule {
 
@@ -33,5 +35,8 @@ public class ClientModule extends AbstractPresenterModule {
 
 		bindPresenter(ThirdPresenter.class, ThirdPresenter.MyView.class,
 				ThirdView.class, ThirdPresenter.MyProxy.class);
+
+		bindPresenterWidget(RatePagePresenter.class,
+				RatePagePresenter.MyView.class, RatePageView.class);
 	}
 }

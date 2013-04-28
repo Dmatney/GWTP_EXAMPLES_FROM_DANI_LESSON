@@ -21,6 +21,8 @@ import com.gwtplatform.mvp.client.proxy.RevealContentEvent;
 public class FirstPresenter extends
 		Presenter<FirstPresenter.MyView, FirstPresenter.MyProxy> {
 
+	public static final Object SLOT_Rate = new Object();
+	
 	public interface MyView extends View {
 		public Label getFirstLabel();
 
@@ -28,6 +30,9 @@ public class FirstPresenter extends
 
 		public Button getFirstButton();
 	}
+	
+	@Inject
+	RatePagePresenter ratePagePresenter;
 
 	@ProxyCodeSplit
 	@NameToken(NameTokens.first)
@@ -55,6 +60,9 @@ public class FirstPresenter extends
 	@Override
 	protected void onReset() {
 		super.onReset();
+		
+		setInSlot(SLOT_Rate, ratePagePresenter);
+		
 		getView().getFirstBox().setText("First Text");
 		
 		getView().getFirstButton().addClickHandler(new ClickHandler() {

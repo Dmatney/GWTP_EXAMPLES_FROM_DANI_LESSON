@@ -12,6 +12,8 @@
 		<g:Label text="Label with text" ui:field="firstLabel"/>
 		<g:TextBox ui:field="firstBox"/>
 		<g:Button text="Click Me" ui:field="firstButton"/>
+	
+		<g:HTMLPanel ui:field="ratePanel"/>
 	</g:HTMLPanel>
 	
 </ui:UiBinder>

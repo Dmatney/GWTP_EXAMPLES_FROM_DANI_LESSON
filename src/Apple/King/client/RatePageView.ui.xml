@@ -7,13 +7,8 @@
 	ui:generateLocales='default'>
 
 	<g:HTMLPanel>
-		<h2>Dave's</h2>
-		<hr/>
-		<g:Label text="Label with text" ui:field="firstLabel"/>
-		<g:TextBox ui:field="firstBox"/>
-		<g:Button text="Click Me" ui:field="firstButton"/>
-	
-		<g:HTMLPanel ui:field="ratePanel"/>
+		Did you like this page?
+		<g:Button ui:field="yesButton" text="Yes"/>
+		<g:Button ui:field="noButton" text="No"/>
 	</g:HTMLPanel>
-	
 </ui:UiBinder>

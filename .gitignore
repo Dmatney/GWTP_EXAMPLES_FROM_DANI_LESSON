@@ -9,7 +9,7 @@ bin/
 gwt-unitCache/
 *.jar
 *.class
-war/WEB-INF
+war/WEB-INF/classes/
 tmp/
 *.tmp
 *.bak
