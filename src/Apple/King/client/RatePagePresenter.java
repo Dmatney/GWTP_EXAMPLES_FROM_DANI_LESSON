@@ -11,6 +11,7 @@ import com.gwtplatform.mvp.client.View;
 
 public class RatePagePresenter extends
 		PresenterWidget<RatePagePresenter.MyView> {
+	@Inject WhyNotPresenter whyNotPresenter;
 
 	public interface MyView extends View {
 		public Button getYesButton();
@@ -37,7 +38,7 @@ public class RatePagePresenter extends
 			
 			@Override
 			public void onClick(ClickEvent event){
-				Window.alert("I am sorry to hear that");
+				addToPopupSlot(whyNotPresenter);
 			}
 		});
 	}

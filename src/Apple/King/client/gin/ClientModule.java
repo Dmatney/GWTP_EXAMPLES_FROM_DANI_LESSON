@@ -15,6 +15,8 @@ import Apple.King.client.ThirdPresenter;
 import Apple.King.client.ThirdView;
 import Apple.King.client.RatePagePresenter;
 import Apple.King.client.RatePageView;
+import Apple.King.client.WhyNotPresenter;
+import Apple.King.client.WhyNotView;
 
 public class ClientModule extends AbstractPresenterModule {
 
@@ -25,6 +27,7 @@ public class ClientModule extends AbstractPresenterModule {
 		bindPresenter(FirstPresenter.class, FirstPresenter.MyView.class,
 				FirstView.class, FirstPresenter.MyProxy.class);
 
+		//This is where you set which page displays first
 		bindConstant().annotatedWith(DefaultPlace.class).to(NameTokens.first);
 
 		bindPresenter(SecondPresenter.class, SecondPresenter.MyView.class,
@@ -38,5 +41,8 @@ public class ClientModule extends AbstractPresenterModule {
 
 		bindPresenterWidget(RatePagePresenter.class,
 				RatePagePresenter.MyView.class, RatePageView.class);
+
+		bindPresenterWidget(WhyNotPresenter.class,
+				WhyNotPresenter.MyView.class, WhyNotView.class);
 	}
 }
