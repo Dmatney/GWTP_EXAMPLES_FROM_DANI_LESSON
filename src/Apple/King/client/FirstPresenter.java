@@ -13,6 +13,7 @@ import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyCodeSplit;
+import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.PlaceRequest;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
@@ -31,10 +32,9 @@ public class FirstPresenter extends
 		public Button getFirstButton();
 	}
 	
-	@Inject
-	RatePagePresenter ratePagePresenter;
+	@Inject	RatePagePresenter ratePagePresenter;
 
-	@ProxyCodeSplit
+	@ProxyStandard
 	@NameToken(NameTokens.first)
 	public interface MyProxy extends ProxyPlace<FirstPresenter> {
 	}
