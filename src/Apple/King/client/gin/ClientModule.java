@@ -17,6 +17,10 @@ import Apple.King.client.RatePagePresenter;
 import Apple.King.client.RatePageView;
 import Apple.King.client.WhyNotPresenter;
 import Apple.King.client.WhyNotView;
+import Apple.King.client.ErrorPresenter;
+import Apple.King.client.ErrorView;
+import Apple.King.client.place.LoginPresenter;
+import Apple.King.client.place.LoginView;
 
 public class ClientModule extends AbstractPresenterModule {
 
@@ -44,5 +48,11 @@ public class ClientModule extends AbstractPresenterModule {
 
 		bindPresenterWidget(WhyNotPresenter.class,
 				WhyNotPresenter.MyView.class, WhyNotView.class);
+
+		bindPresenter(ErrorPresenter.class, ErrorPresenter.MyView.class,
+				ErrorView.class, ErrorPresenter.MyProxy.class);
+
+		bindPresenter(LoginPresenter.class, LoginPresenter.MyView.class,
+				LoginView.class, LoginPresenter.MyProxy.class);
 	}
 }

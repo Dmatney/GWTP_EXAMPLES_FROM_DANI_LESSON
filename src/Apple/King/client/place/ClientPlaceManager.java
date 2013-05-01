@@ -23,4 +23,18 @@ public class ClientPlaceManager extends PlaceManagerImpl {
 	public void revealDefaultPlace() {
 		revealPlace(defaultPlaceRequest, false);
 	}
+		@Override
+		public void revealErrorPlace(String invalidHistoryToken) {
+			PlaceRequest request = new PlaceRequest(NameTokens.error);
+			revealPlace(request, false);
+			//adding the False prevents the page from changing the URL
+		}
+	@Override
+	public void revealUnauthorizedPlace(String unauthorizedHistoryToken) {
+		//Can be used to redirect the user back to the page they were trying to access rather than the default page after signing in
+		//PlaceRequest current = getCurrentPlaceRequest();
+		
+		PlaceRequest request = new PlaceRequest(NameTokens.login);
+		revealPlace(request);
+	}
 }

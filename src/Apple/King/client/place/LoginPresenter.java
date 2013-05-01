@@ -1,11 +1,9 @@
-package Apple.King.client;
+package Apple.King.client.place;
 
 import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.ProxyCodeSplit;
 import com.gwtplatform.mvp.client.annotations.NameToken;
-import com.gwtplatform.mvp.client.annotations.UseGatekeeper;
-
 import Apple.King.client.place.NameTokens;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import com.google.inject.Inject;
@@ -13,21 +11,19 @@ import com.google.gwt.event.shared.EventBus;
 import com.gwtplatform.mvp.client.proxy.RevealContentEvent;
 import Apple.King.client.HeaderPresenter;
 
-public class ThirdPresenter extends
-		Presenter<ThirdPresenter.MyView, ThirdPresenter.MyProxy> {
+public class LoginPresenter extends
+		Presenter<LoginPresenter.MyView, LoginPresenter.MyProxy> {
 
 	public interface MyView extends View {
 	}
 
 	@ProxyCodeSplit
-	@NameToken(NameTokens.third)
-	@UseGatekeeper(TestGatekeeper.class)
-	
-	public interface MyProxy extends ProxyPlace<ThirdPresenter> {
+	@NameToken(NameTokens.login)
+	public interface MyProxy extends ProxyPlace<LoginPresenter> {
 	}
 
 	@Inject
-	public ThirdPresenter(final EventBus eventBus, final MyView view,
+	public LoginPresenter(final EventBus eventBus, final MyView view,
 			final MyProxy proxy) {
 		super(eventBus, view, proxy);
 	}
