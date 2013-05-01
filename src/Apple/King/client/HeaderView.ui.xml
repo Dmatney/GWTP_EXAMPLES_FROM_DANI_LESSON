@@ -8,6 +8,7 @@
 
 	<g:HTMLPanel>
 		<h1>Header for Dani's GWTP Course</h1>
+		<g:Label ui:field = "happyLabel" text="Welcome happy user!"/>
 		<hr/>
 		<g:HTMLPanel ui:field="contentPanel">
 		</g:HTMLPanel>

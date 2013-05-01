@@ -1,7 +1,10 @@
 package Apple.King.client;
 
+import Apple.King.client.UserNotHappyEvent.UserNotHappyHandler;
+
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.event.shared.GwtEvent.Type;
+import com.google.gwt.user.client.ui.Label;
 import com.google.inject.Inject;
 import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
@@ -17,8 +20,14 @@ public class HeaderPresenter extends
 
 	 @ContentSlot public static final Type<RevealContentHandler<?>> SLOT_content = new Type<RevealContentHandler<?>>();
 
-		
+private final UserNotHappyHandler notHappyHandler = new UserNotHappyHandler(){
+	@Override
+	public void onUserNotHappy(UserNotHappyEvent event) {
+		getView().getHappyLabel().setText("");
+	 }
+};
 	public interface MyView extends View {
+		public Label getHappyLabel();
 	}
 
 	@ProxyCodeSplit
@@ -39,5 +48,9 @@ public class HeaderPresenter extends
 	@Override
 	protected void onBind() {
 		super.onBind();
+		
+		registerHandler(getEventBus().addHandler(UserNotHappyEvent.getType(), notHappyHandler));
+		
 	}
 }
+
