@@ -5,10 +5,13 @@ import Apple.King.client.place.NameTokens;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.shared.EventBus;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.inject.Inject;
+import com.google.inject.spi.DisableCircularProxiesOption;
+import com.gwtplatform.dispatch.shared.DispatchAsync;
 import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.NameToken;
@@ -54,8 +57,8 @@ public class FirstPresenter extends
 	protected void onBind() {
 		super.onBind();
 	}
-	@Inject
-	PlaceManager placeManager;
+	@Inject PlaceManager placeManager;
+	@Inject DispatchAsync dispatchAsync;
 	
 	@Override
 	protected void onReset() {
@@ -69,10 +72,21 @@ public class FirstPresenter extends
 			
 			@Override
 			public void onClick(ClickEvent event) {
-				PlaceRequest request = new PlaceRequest (NameTokens.getSecond()).with("name",getView().getFirstBox().getText());
-				placeManager.revealPlace(request);
+			GetFirst action = new GetFirst(getView().getFirstBox().getText());
+			dispatchAsync.execute(action,  getFirstCallback);
 			}
 		});
 	}
-	
+	private AsyncCallback<GetFirstResult> getFirstCallback = new AsyncCallback<GetFirstResult>() {
+		@Override
+		public void onSuccess(GetFirstResult result) {
+			PlaceRequest request = new PlaceRequest (NameTokens.getSecond()).with("name",result.getText());
+			placeManager.revealPlace(request);
+		}
+		@Override
+		public void onFailure(Throwable caught) {
+			
+		}
+	};
 }
+

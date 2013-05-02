@@ -30,5 +30,11 @@
 		<filter-name>guiceFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	<!-- 
+		<static-files>
+    	<exclude path="/**.html" />
+	</static-files>
+	 -->
+
 
 </web-app>
