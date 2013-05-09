@@ -15,6 +15,7 @@ import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
+import com.gwtplatform.mvp.client.proxy.ManualRevealCallback;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.PlaceRequest;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
@@ -50,7 +51,27 @@ public class FirstPresenter extends
 	protected void revealInParent() {
 		RevealContentEvent.fire(this, HeaderPresenter.SLOT_content, this);
 	}
-
+	
+	@Override
+	public boolean useManualReveal() {
+		return true;
+	}
+	@Override
+	public void prepareFromRequest(PlaceRequest request) {
+		super.prepareFromRequest(request);
+		
+		GetData action = new GetData();
+		dispatchAsync.execute(action, getDataCallback);
+	}
+	private AsyncCallback<GetDataResult> getDataCallback = ManualRevealCallback.create(this, new AsyncCallback<GetDataResult>(){
+		@Override
+		public void onSuccess(GetDataResult result) {
+			getView().getFirstBox().setText(result.getData());
+			
+		};
+		@Override
+		public void onFailure(Throwable caught) {};
+	});
 	@Override
 	protected void onBind() {
 		super.onBind();
@@ -64,7 +85,7 @@ public class FirstPresenter extends
 		
 		setInSlot(SLOT_Rate, ratePagePresenter);
 		
-		getView().getFirstBox().setText("First Text");
+		//getView().getFirstBox().setText("First Text");
 		
 		getView().getFirstButton().addClickHandler(new ClickHandler() {
 			
