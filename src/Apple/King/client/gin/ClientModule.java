@@ -34,7 +34,7 @@ public class ClientModule extends AbstractPresenterModule {
 				FirstView.class, FirstPresenter.MyProxy.class);
 		
 		//Is NOT a secret
-		//bindConstant().annotatedWith(SecurityCookie.class).to("MYCOOKIE");
+		bindConstant().annotatedWith(SecurityCookie.class).to("MYCOOKIE");
 	
 
 		//This is where you set which page displays first
